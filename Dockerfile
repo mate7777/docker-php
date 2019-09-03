@@ -1,7 +1,7 @@
 FROM php:7.3-fpm-alpine
 
 ENV PS1 '\u@\h:\w\$ '
-RUN apk --no-cache add icu-dev curl-dev gmp-dev libuv-dev libuv cassandra-cpp-driver cassandra-cpp-driver-dev \
+RUN apk --no-cache add icu-dev curl-dev gmp-dev libuv-dev libuv  \
     && docker-php-ext-install pdo intl curl \
     && apk --no-cache add --upgrade icu-libs \
     && apk add --no-cache --virtual .phpize-deps $PHPIZE_DEPS \
