@@ -1,4 +1,4 @@
-FROM php:7.1-fpm-alpine
+FROM php:7.3-fpm-alpine
 
 ENV PS1 '\u@\h:\w\$ '
 RUN apk --no-cache add icu-dev curl-dev gmp-dev libuv-dev libuv cassandra-cpp-driver cassandra-cpp-driver-dev \
