@@ -5,9 +5,7 @@ RUN apk --no-cache add icu-dev curl-dev gmp-dev libuv-dev libuv  \
     && docker-php-ext-install pdo intl curl \
     && apk --no-cache add --upgrade icu-libs \
     && apk add --no-cache --virtual .phpize-deps $PHPIZE_DEPS \
-    && pecl install xdebug redis apcu cassandra \
     && apk del .phpize-deps \
-    && docker-php-ext-enable apcu intl opcache pdo curl redis xdebug cassandra
 
 RUN version=$(php -r "echo PHP_MAJOR_VERSION.PHP_MINOR_VERSION;") \
     && curl -A "Docker" -o /tmp/blackfire-probe.tar.gz -D - -L -s https://blackfire.io/api/v1/releases/probe/php/linux/amd64/$version \
