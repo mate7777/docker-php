@@ -12,13 +12,13 @@ RUN  pecl install redis apcu
 RUN apk del .phpize-deps
 RUN docker-php-ext-enable apcu intl opcache pdo curl redis
 
-COPY entrypoint.sh /usr/local/bin/entrypoint
-RUN chmod +x /usr/local/bin/entrypoint
+# COPY entrypoint.sh /usr/local/bin/entrypoint
+# RUN chmod +x /usr/local/bin/entrypoint
 #
 WORKDIR /var/www/html
 #
 EXPOSE 9000
 
-ENTRYPOINT ["entrypoint"]
+# ENTRYPOINT ["entrypoint"]
 
 CMD ["php-fpm"]
