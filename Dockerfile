@@ -15,7 +15,7 @@ RUN chmod +x /usr/local/bin/entrypoint
 #
 WORKDIR /var/www/html
 #
-EXPOSE 9000
+EXPOSE 80
 
 ENTRYPOINT ["entrypoint"]
 
