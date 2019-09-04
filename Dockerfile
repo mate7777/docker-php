@@ -8,8 +8,9 @@ RUN apk --no-cache add icu-dev curl-dev gmp-dev libuv-dev libuv
 RUN docker-php-ext-install pdo intl curl 
 RUN apk --no-cache add --upgrade icu-libs
 RUN apk add --no-cache --virtual .phpize-deps $PHPIZE_DEPS
+RUN  pecl install redis apcu
 RUN apk del .phpize-deps
-RUN docker-php-ext-enable intl opcache pdo curl redis
+RUN docker-php-ext-enable apcu intl opcache pdo curl redis
 
 COPY entrypoint.sh /usr/local/bin/entrypoint
 RUN chmod +x /usr/local/bin/entrypoint
