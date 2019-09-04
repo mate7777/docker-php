@@ -30,17 +30,6 @@ if [ ! -f /lock-install ]; then
         fi
     fi
 
-    # Installation xdebug
-    if [ ${CONTAINER_ENV} = dev ]; then
-        echo Installation Xdebug
-        echo "zend_extension="`find /usr/local/lib/php/extensions -name 'xdebug.so' 2> /dev/null`"" | tee /usr/local/etc/php/conf.d/xdebug.ini
-        # active xdebug
-        echo "zend_extension="`find /usr/lib/php -name 'xdebug.so' 2> /dev/null`"" | tee /etc/php/7.3/mods-available/xdebug.ini
-        rm -f /etc/php/7.3/fpm/conf.d/20-xdebug.ini
-        ln -s /etc/php/7.3/mods-available/xdebug.ini /etc/php/7.3/fpm/conf.d/20-xdebug.ini
-        sed -r -i "s/xdebug\.remote_host ?\=.*$/xdebug.remote_host=$(ip route|awk '/default/ { print $3 }')/" /etc/php/7.3/fpm/php.ini.new
-    fi;
-
     # Installation outils console
     if [ ${CONTAINER_ENV} = "dev" ]; then
         echo Installation Outils
